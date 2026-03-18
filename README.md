@@ -30,7 +30,7 @@ L'app consente di:
 
 ```bash
 simulatore-indici-comuni-2025/
-├── app.py
+├── app_test.py
 ├── create_index.py
 ├── index_config_D2_D3.json
 ├── pyproject.toml

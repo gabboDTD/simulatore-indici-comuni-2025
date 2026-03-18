@@ -1,0 +1,658 @@
+{
+  "level1": {
+    "indices": {
+        "indice_copertura_integrazione_backoffice_frontoffice": {
+        "question": "7.1 Per ciascuna delle seguenti categorie di servizi, indica cortesemente il livello di digitalizzazione raggiunto nella gestione interna da parte dell’ente (back-office).",
+        "description": "Misura, su scala 0–100, la copertura delle principali categorie di servizi comunali in cui la gestione interna (back-office) è supportata da una soluzione applicativa dedicata integrata con il portale dei servizi online (front-office), abilitando la disponibilità effettiva del front office. Per ogni categoria di servizio il punteggio è 1 solo se è dichiarata l’integrazione con il portale; in tutti gli altri casi (gestionale non integrato, strumenti di produttività individuale, gestione cartacea) il punteggio è 0. Le categorie considerate hanno peso uniforme (1.0) e l’indice è calcolato come somma pesata normalizzata rispetto al massimo teorico e contribuire alla misura complessiva di integrazione/abilitazione del front office.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [301]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Utilizzo di soluzioni applicative dedicate, integrate con il portale dei servizi online": 1,
+            "Utilizzo di applicazioni gestionali dedicate, ma non integrate con front-office al cittadino (servizi online)": 0,
+            "Utilizzo di strumenti di produttività individuale (scrittura documenti, fogli di calcolo, data base, ecc.)": 0,
+            "Servizio non gestito in maniera digitale (gestione cartacea)": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Patrimonio (gestione amministrativa)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0,
+            "Servizi scolastici": 1.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Tributi (maggiori, minori)": 1.0,
+            "Demografici (anagrafe, stato civile, elettorale, leva, statistica)": 1.0,
+            "Edilizia e Urbanistica": 1.0,
+            "Polizia locale": 1.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_abilitazione_canali_digitali_SUE": {
+        "question": "7.8 Potresti cortesemente indicare quanto sono utilizzate le seguenti modalità per la presentazione di istanze e dichiarazioni all’amministrazione per i servizi gestiti dallo sportello unico dell’edilizia nel tuo Comune? Seleziona un’opzione per riga.",
+        "description": "Misura, su scala 0–100, il livello di abilitazione e disponibilità dei canali digitali per la presentazione di istanze e dichiarazioni allo Sportello Unico dell’Edilizia (SUE). Per ciascun canale considerato, assegna 1 se il canale risulta disponibile e utilizzato almeno in parte (‘Poco usato’ o ‘Molto usato’) e 0 se ‘Non disponibile’. Il punteggio è una somma pesata che valorizza maggiormente i canali di front office più evoluti (sportello online e app, peso 3), seguiti dal caricamento di PDF compilabili (peso 2) e dalla PEC/e-mail (peso 1); la modalità cartacea non contribuisce (peso 0). L’indice è normalizzato rispetto al massimo teorico, per rendere confrontabili i Comuni e contribuire alla misura complessiva di integrazione/abilitazione del front office.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [308]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Molto usato": 1,
+            "Poco usato": 1,
+            "Non disponibile": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Sportello online (procedura digitale)": 2.0,
+            "App tramite smartphone": 1.0,
+            "Caricamento online di PDF compilabili": 1.0,
+            "PEC/e-mail con o senza allegati": 1.0,
+            "Presentazione cartacea (via posta o a sportello)": 0.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_disponibilita_monitoraggio_pratiche_online": {
+        "question": "7.9 Per le istanze e dichiarazioni presentate all’amministrazione, il tuo Comune mette a disposizione dei cittadini e delle imprese la possibilità di consultare online e in autonomia lo stato di avanzamento del fascicolo e degli atti dei propri procedimenti?",
+        "description": "Misura, su scala 0–100, il livello di disponibilità per cittadini e imprese di consultare online e in autonomia l’avanzamento dei procedimenti. Assegna 2 quando, oltre allo stato di avanzamento, è disponibile (almeno in alcuni casi) anche l’accesso al fascicolo della pratica; assegna 1 quando è disponibile la sola consultazione dello stato di avanzamento per tutti o la maggior parte dei procedimenti; assegna 0 in assenza di funzionalità o se non sono disponibili informazioni. L’indice è normalizzato rispetto al massimo teorico e contribuisce alla misura di abilitazione/integrazione/disponibilità del front office, in quanto rappresenta un servizio digitale di consultazione autonoma post-presentazione.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [309]
+        },
+        "scoring": {
+            "response_col": "risposta_voce",
+            "value_map": {
+            "Sì, in alcuni casi anche con accesso al fascicolo della pratica": 2,
+            "Sì, ma solo lo stato di avanzamento del procedimento (per tutti o la maggior parte)": 1,
+            "No, in nessun modo": 0,
+            "Non sono disponibili informazioni": 0
+            },
+            "default_score": 0
+        },
+        "aggregation": {
+            "method": "sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_sum",
+            "scale": 100
+        }
+        },
+        "indice_servizi_completamente_online": {
+        "question": "9.1 Potresti cortesemente indicare se per usufruire dei principali servizi offerti dal tuo Comune al cittadino, relativi alle seguenti categorie, è necessario recarsi presso l’ufficio o è disponibile la procedura online (web o app)? Seleziona un’opzione per ogni riga.",
+        "description": "Misura, su scala 0–100, la quota e il livello con cui i principali servizi comunali risultano completamente fruibili online, senza necessità di recarsi presso gli uffici. Per ciascuna categoria di servizio assegna 2 se la procedura è disponibile online e completabile senza accessi agli uffici, 1 se è disponibile online ma richiede comunque un passaggio in presenza, e 0 se è necessario recarsi presso gli uffici. Le categorie contribuiscono con peso uniforme (1.0); il punteggio è calcolato come somma pesata e normalizzato rispetto al massimo teorico, contribuendo alla misura di abilitazione/integrazione/disponibilità del front office.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [315]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "È disponile online, senza recarsi presso gli uffici": 2,
+            "È disponile online ma bisogna comunque recarsi presso gli uffici": 1,
+            "È necessario recarsi presso gli uffici": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Tributi (maggiori, minori)": 2.0,
+            "Polizia locale": 2.0,
+            "Demografici (anagrafe, stato civile, elettorale, leva, statistica)": 1.0,
+            "Edilizia e Urbanistica": 2.0,
+            "Servizi scolastici": 2.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_copertura_servizi_interamente_online": {
+        "question": "9.2 Per ciascuna tipologia di servizio offerto ai cittadini dal tuo Comune, erogato interamente online, potresti cortesemente indicare la percentuale di effettivo utilizzo?",
+        "description": "Misura, su scala 0–100, la copertura delle principali tipologie di servizi comunali che risultano effettivamente disponibili ed erogati interamente online. Per ciascuna tipologia, il Comune ottiene 1 se la percentuale di utilizzo indicata è > 0% (servizio attivo online), altrimenti 0. Le tipologie contribuiscono con pesi uniformi (1.0); il punteggio è calcolato come somma pesata e normalizzato rispetto al massimo teorico.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [386]
+        },
+        "scoring": {
+            "score_type": "percentage_binary",
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "threshold_gt": 0,
+            "weights": {
+            "Tributi (maggiori, minori)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0,
+            "Servizi scolastici": 1.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Demografici (anagrafe, stato civile, elettorale, leva, statistica)": 1.0,
+            "Edilizia e Urbanistica": 1.0, 
+            "Polizia locale": 1.0
+            },
+            "default_weight": 1.0,
+            "min_value": 0,
+            "max_value": 100
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_utilizzo_canali_online_SUE": {
+        "question": "7.8 Potresti cortesemente indicare quanto sono utilizzate le seguenti modalità per la presentazione di istanze e dichiarazioni all’amministrazione per i servizi gestiti dallo sportello unico dell’edilizia nel tuo Comune? Seleziona un’opzione per riga.",
+        "description": "Misura, su scala 0–100, l’intensità di utilizzo dei canali online per la presentazione di istanze e dichiarazioni allo Sportello Unico dell’Edilizia (SUE). Per ciascun canale assegna 2 se ‘Molto usato’, 1 se ‘Poco usato’ e 0 se ‘Non disponibile’; la presentazione cartacea non contribuisce al punteggio (peso 0). Il punteggio è calcolato come somma pesata dei canali (pesi uniformi per i canali digitali) e normalizzato rispetto al massimo teorico.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [308]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Molto usato": 2,
+            "Poco usato": 1,
+            "Non disponibile": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Sportello online (procedura digitale)": 1.0,
+            "App tramite smartphone": 1.0,
+            "Caricamento online di PDF compilabili": 1.0,
+            "PEC/e-mail con o senza allegati": 1.0,
+            "Presentazione cartacea (via posta o a sportello)": 0.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_utilizzo_servizi_online_attivi": {
+        "question": "9.2 Per ciascuna tipologia di servizio offerto ai cittadini dal tuo Comune, erogato interamente online, potresti cortesemente indicare la percentuale di effettivo utilizzo?",
+        "description": "Misura, su scala 0–100, l’utilizzo medio dei servizi comunali erogati interamente online limitandosi ai servizi effettivamente attivi. Per ciascuna tipologia di servizio utilizza la percentuale di utilizzo dichiarata (0–100) e calcola una media pesata; gli eventuali valori pari a 0% sono esclusi dal calcolo (exclude_zeros=true) perché possono rappresentare anche servizi non disponibili.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [386]
+        },
+        "scoring": {
+            "score_type": "percentage",
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "exclude_zeros": true,
+            "weights": {
+            "Tributi (maggiori, minori)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0,
+            "Servizi scolastici": 1.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Demografici (anagrafe, stato civile, elettorale, leva, statistica)": 1.0,
+            "Edilizia e Urbanistica": 1.0, 
+            "Polizia locale": 1.0
+            },
+            "default_weight": 1.0,
+            "min_value": 0,
+            "max_value": 100
+        },
+        "aggregation": {
+            "method": "weighted_mean"
+        },
+        "normalization": {
+            "method": "identity_0_100",
+            "scale": 100
+        }
+        },
+        "indice_disponibilita_assistenza_servizi_online": {
+        "domanda": "9.3 Per ciascuno dei seguenti strumenti volti a supportare e facilitare l'utilizzo dei servizi online, indica cortesemente se il tuo Comune lo rende disponibile ai cittadini. Seleziona un’opzione per riga.",
+        "description": "Misura, su scala 0–100, la disponibilità di strumenti di supporto all’utilizzo dei servizi online messi a disposizione dal Comune. Per ciascuno strumento assegna 2 se ‘Disponibile’, 1 se ‘In sviluppo’ e 0 se ‘Assente’. Il punteggio è calcolato come somma pesata e normalizzato rispetto al massimo teorico: in questa configurazione contribuiscono solo i canali di assistenza (supporto in presenza, call center dedicato, chatbot; peso 1), mentre componenti infrastrutturali/di canale (portale, notifiche push, app mobile dedicata) hanno peso 0 e non incidono sull’indice.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [318]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Disponibile": 2,
+            "In sviluppo": 1,
+            "Assente": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Supporto e assistenza al cittadino in presenza": 2.0,
+            "Call center dedicato": 2.0,
+            "Chatbot per assistenza": 1.0,
+            "Portale dei servizi": 1.0,
+            "Sistema di notifiche push": 1.0,
+            "App mobile dedicata (iOS, Android) diversa da app IO": 1.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_maturita_digitalizzazione_backoffice": {
+        "question": "7.1 Per ciascuna delle seguenti categorie di servizi, indica cortesemente il livello di digitalizzazione raggiunto nella gestione interna da parte dell’ente (back-office).",
+        "description": "Misura, su scala 0–100, il livello di maturità della digitalizzazione del back office nelle principali categorie di servizi comunali. Per ciascuna categoria assegna un punteggio crescente in base al livello di digitalizzazione: 3 se il servizio è gestito con soluzioni applicative dedicate integrate con il portale dei servizi online, 2 se è gestito con applicazioni dedicate ma non integrate con il front office, 1 se è gestito con strumenti di produttività individuale (es. documenti/fogli di calcolo/database), 0 se la gestione è cartacea. Le categorie contribuiscono con peso uniforme (1.0); il punteggio complessivo è calcolato come somma pesata e normalizzato rispetto al massimo teorico.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [301]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Utilizzo di soluzioni applicative dedicate, integrate con il portale dei servizi online": 3,
+            "Utilizzo di applicazioni gestionali dedicate, ma non integrate con front-office al cittadino (servizi online)": 2,
+            "Utilizzo di strumenti di produttività individuale (scrittura documenti, fogli di calcolo, data base, ecc.)": 1,
+            "Servizio non gestito in maniera digitale (gestione cartacea)": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Patrimonio (gestione amministrativa)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0,
+            "Servizi scolastici": 1.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Tributi (maggiori, minori)": 1.0,
+            "Demografici (anagrafe, stato civile, elettorale, leva, statistica)": 1.0,
+            "Edilizia e Urbanistica": 1.0,
+            "Polizia locale": 1.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_implementazione_processi_digitali_interni": {
+        "question": "11.3 Per ciascuna delle seguenti attività, indica cortesemente il livello di implementazione attuale nel tuo Comune. Seleziona un’opzione per riga.",
+        "description": "Misura, su scala 0–100, il livello di implementazione attuale di alcune iniziative chiave legate alla digitalizzazione dei processi interni e all’uso dei dati nel Comune. Per ciascuna attività assegna 1 solo se l’iniziativa è dichiarata ‘Già attiva’ e 0 in tutti gli altri casi (‘Prevista entro 12 mesi’, ‘In fase di valutazione’, ‘Non prevista’). Il punteggio è calcolato come somma pesata e normalizzato rispetto al massimo teorico: in questa configurazione contribuiscono all’indice solo le attività ritenute core per l’operatività e la gestione dei dati (peso 1), mentre altre dimensioni (es. formazione, open data, collaborazione) hanno peso 0 e non incidono.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [327]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Già attiva":1,
+            "Prevista entro 12 mesi":0,
+            "In fase di valutazione":0,
+            "Non prevista":0
+            },
+            "default_score": 0,
+            "weights": {
+            "Digitalizzazione dei processi interni per migliorare la propria efficienza operativa.":3,
+            "Formazione del personale per rafforzare le competenze nella gestione dei dati, dalla raccolta all’analisi e visualizzazione.":1,
+            "Utilizzo di dati per migliorare l’efficienza dei servizi, semplificare i processi interni e favorire la condivisione delle informazioni.":1,
+            "Realizzazione strumenti di visualizzazione (es. cruscotti, dashboard) per monitorare fenomeni, interpretare dati, valutare l’efficacia delle politiche pubbliche e orientare le decisioni":1,
+            "Disponibilità open data.":0,
+            "Collaborazione con altri enti pubblici, privati e comunità per promuovere la trasformazione digitale.":0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },
+        "indice_integrazione_servizi_sistemi_interni": {
+        "question": "7.2 Per ciascuna delle seguenti categorie di servizi, indica cortesemente con quali sistemi sono integrati.",
+        "description": "Misura (0–100) il livello complessivo di integrazione dei moduli di servizio con sistemi interni. Per ciascuna categoria di servizio, il punteggio è la somma dei pesi delle integrazioni selezionate (Protocollo, Ragioneria, Anagrafe), con pesi che variano per categoria. Se è selezionata solo l’opzione 'Non è integrato...' il punteggio è 0. L’indice complessivo è la somma dei punteggi sulle categorie, normalizzata sul massimo teorico.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [302]
+        },
+        "scoring": {
+            "score_type": "multi_select_rows_weight_matrix",
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "non_integrated_value": "Non è integrato o non è gestito internamente",
+            "integration_weight_matrix": {
+            "Ambiente (autorizzazioni e servizi)": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 1,
+                "Anagrafe": 1
+            },
+            "Polizia locale": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 2,
+                "Anagrafe": 1
+            },
+            "Servizi scolastici": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 1,
+                "Anagrafe": 1
+            },
+            "Servizi sociali e disabilità (welfare)": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 1,
+                "Anagrafe": 2
+            },
+            "Tributi (maggiori, minori)": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 2,
+                "Anagrafe": 2
+            },
+            "Urbanistica ed edilizia": {
+                "Protocollo e gestione documentale": 2,
+                "Ragioneria e contabilità": 1,
+                "Anagrafe": 1
+            }
+            },
+            "default_integration_weight": 0
+        },
+        "aggregation": { "method": "sum" },
+        "normalization": { "method": "percent_of_max_total_sum", "scale": 100 }
+        },
+        "indice_integrazione_servizi_sistemi_esterni": {
+        "question": "7.3 Per ognuna delle categorie di servizi elencati, indica cortesemente i soggetti esterni con cui è attiva un’integrazione.",
+        "description": "Misura (0–100) il livello complessivo di integrazione dei moduli di servizio con sistemi esterni. Per ciascuna categoria di servizio, il punteggio è la somma dei pesi delle integrazioni selezionate (Agenzia delle Entrate, INPS, Regione/sanità), con pesi che variano per categoria. Se è selezionata solo l’opzione 'Nessuno' il punteggio è 0. L’indice complessivo è la somma dei punteggi sulle categorie, normalizzata sul massimo teorico.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [303]
+        },
+        "scoring": {
+            "score_type": "multi_select_rows_weight_matrix",
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "non_integrated_value": "Nessuno",
+            "integration_weight_matrix": {
+            "Servizi scolastici": {
+                "INPS": 2,
+                "Regione/sanità": 1,
+                "Agenzia delle Entrate": 1
+            },
+            "Servizi sociali e disabilità (welfare)": {
+                "INPS": 2,
+                "Regione/sanità": 2,
+                "Agenzia delle Entrate": 1
+            }
+            },
+            "default_integration_weight": 0
+        },
+        "aggregation": { "method": "sum" },
+        "normalization": { "method": "percent_of_max_total_sum", "scale": 100 }
+        },
+        "indice_riconciliazione_pagopa_automatica": {
+        "question": "7.4 Per quali categorie di servizi, tra quelli elencati, è attiva la riconciliazione automatica dei pagamenti pagoPA nel tuo Comune? Seleziona una o più opzioni.",
+        "description": "Misura (0–100) la copertura della riconciliazione automatica pagoPA: vale 1 per ogni categoria di servizio selezionata. Se è selezionato solo 'Nessuno' il punteggio è 0. L’indice è la somma dei punteggi normalizzata sul massimo teorico (numero di categorie).",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [304]
+        },
+        "scoring": {
+            "score_type": "value_map",
+            "response_col": "risposta_voce",
+            "selection_mode": true,
+            "none_value": "Nessuno",
+            "default_score": 0,
+            "weights": {
+            "Tributi": 1.0,
+            "Patrimonio (gestione amministrativa)": 1.0,
+            "Servizi sociali e disabilità (welfare)": 1.0,
+            "Servizi scolastici (asili, pre/post scuola, ...)": 1.0,
+            "Servizi scolastici (mensa, trasporti, …)": 1.0,
+            "Ambiente (autorizzazioni e servizi)": 1.0,
+            "Edilizia e Urbanistica": 1.0,
+            "Servizi Cimiteriali": 1.0,
+            "Polizia locale": 1.0,
+            "Nessuno": 0.0
+            },
+            "default_weight": 0.0
+        },
+        "aggregation": { "method": "weighted_sum" },
+        "normalization": { "method": "percent_of_max_weighted_sum", "scale": 100 }
+        },
+        "indice_gestione_digitale_atti": {
+        "question": "7.5 Come sono gestiti digitalmente gli atti (autorizzativi, sanzionatori, ecc.) nel tuo Comune che prevedono la sottoscrizione del Responsabile del procedimento (o di altri funzionari preposti)?",
+        "description": "Misura, su scala 0–100, la digitalizzazione degli atti che prevedono la sottoscrizione del responsabile del procedimento.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [305]
+        },
+        "scoring": {
+            "row_id_col": "risposta_voce",
+            "response_col": "risposta_valore",
+            "value_map": {
+            "Completamente digitalizzati con applicazioni gestionali dedicate (moduli applicativi, sistemi di workflow, ecc.)": 3,
+            "Atti digitali, ma utilizzando solo strumenti di produttività individuale (uso di e-mail, documenti di testo, fogli di calcolo, ecc.)": 2,
+            "Parzialmente digitalizzati (alcune fasi di gestione interna prevedono la produzione di documenti cartacei)": 1,
+            "Non digitalizzati (principalmente attraverso documenti cartacei e procedure manuali)": 0
+            },
+            "default_score": 0,
+            "weights": {
+            "Edilizia (SUE)": 1.0, 
+            "Ambiente": 1.0, 
+            "Polizia Locale": 1.0, 
+            "Tributi": 1.0
+            }
+        },
+        "aggregation": {
+            "method": "weighted_sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_weighted_sum",
+            "scale": 100
+        }
+        },        
+        "indice_fascicolazione_digitale": {
+        "question": "7.6 Per i documenti e gli atti formati o ricevuti nella gestione di una pratica amministrativa, viene utilizzata la fascicolazione digitale nel tuo Comune?",
+        "description": "Misura, su scala 0–100, il livello di disponibilità per cittadini e imprese di consultare online e in autonomia l’avanzamento dei procedimenti. Assegna 2 quando, oltre allo stato di avanzamento, è disponibile (almeno in alcuni casi) anche l’accesso al fascicolo della pratica; assegna 1 quando è disponibile la sola consultazione dello stato di avanzamento per tutti o la maggior parte dei procedimenti; assegna 0 in assenza di funzionalità o se non sono disponibili informazioni. L’indice è normalizzato rispetto al massimo teorico e contribuisce alla misura di abilitazione/integrazione/disponibilità del front office, in quanto rappresenta un servizio digitale di consultazione autonoma post-presentazione.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "filters": {
+            "domanda_id": [306]
+        },
+        "scoring": {
+            "response_col": "risposta_voce",
+            "value_map": {
+            "Si, tutte le pratiche, o comunque la maggior parte, vengono archiviate tramite fascicoli digitali":2,
+            "Si, ma la fascicolazione digitale si attua solo per alcune tipologie di pratiche":1,
+            "No, non viene gestita la fascicolazione digitale delle pratiche":0
+            },
+            "default_score": 0
+        },
+        "aggregation": {
+            "method": "sum"
+        },
+        "normalization": {
+            "method": "percent_of_max_sum",
+            "scale": 100
+        }
+        },
+    "indice_maturita_interscambio_documentale": {
+    "question": "7.7 Per ognuna delle modalità di invio e condivisione della documentazione amministrativa per l’interscambio tra amministrazioni nella gestione dei procedimenti elencate di seguito, indica cortesemente la frequenza di utilizzo.",
+    "description": "Misura (0–100) la maturità delle modalità di interscambio documentale tra PA, combinando modalità ‘positive’ (più uso = meglio) e ‘negative’ (più uso = peggio). Per ciascuna modalità assegna un punteggio in base alla frequenza (‘Nessun utilizzo’, ‘A volte’, ‘Spesso’) usando una mappa dedicata: per le modalità mature il punteggio cresce con la frequenza (0–1–2), mentre per modalità deboli/tradizionali decresce (2–1–0). Il punteggio complessivo è la somma (eventualmente pesata) normalizzata sul massimo teorico.",
+    "entity_keys": ["quesito.user_id", "quesito.username"],
+    "filters": { "domanda_id": [307] },
+    "scoring": {
+        "score_type": "value_map_by_row",
+        "row_id_col": "risposta_voce",
+        "response_col": "risposta_valore",
+        "default_score": 0,
+
+        "row_value_maps": {
+        "Invio tramite PEC da Protocollo informatico": {
+            "Nessun utilizzo": 0,
+            "A volte": 1,
+            "Spesso": 2
+        },
+        "Condivisione di file (documenti) tramite piattaforme online": {
+            "Nessun utilizzo": 0,
+            "A volte": 1,
+            "Spesso": 2
+        },
+        "Accesso condiviso al fascicolo e agli atti del procedimento tramite il sistema gestionale dell’ente": {
+            "Nessun utilizzo": 0,
+            "A volte": 1,
+            "Spesso": 2
+        },
+        "Utilizzo di piattaforme per lo svolgimento delle conferenze di servizi in modalità telematica": {
+            "Nessun utilizzo": 0,
+            "A volte": 1,
+            "Spesso": 2
+        },
+
+        "Invio cartaceo": {
+            "Nessun utilizzo": 2,
+            "A volte": 1,
+            "Spesso": 0
+        },
+        "Invio di atti tramite e-mail e/o servizi di file transfer": {
+            "Nessun utilizzo": 2,
+            "A volte": 1,
+            "Spesso": 0
+        }
+        },
+
+        "weights": {
+        "Invio tramite PEC da Protocollo informatico": 1.0,
+        "Condivisione di file (documenti) tramite piattaforme online": 0.0,
+        "Accesso condiviso al fascicolo e agli atti del procedimento tramite il sistema gestionale dell’ente": 1.0,
+        "Utilizzo di piattaforme per lo svolgimento delle conferenze di servizi in modalità telematica": 1.0,
+        "Invio cartaceo": 1.0,
+        "Invio di atti tramite e-mail e/o servizi di file transfer": 1.0
+        },
+        "default_weight": 1.0
+    },
+    "aggregation": { "method": "weighted_sum" },
+    "normalization": { "method": "percent_of_max_weighted_sum", "scale": 100 }
+    }        
+    }
+  },
+  "level2": {
+    "indices": {
+      "indice_front_office": {
+        "description": "Composito (0–100) di abilitazione/integrazione/disponibilità del front office.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_copertura_integrazione_backoffice_frontoffice": 0.2,
+          "indice_abilitazione_canali_digitali_SUE": 0.05,
+          "indice_disponibilita_monitoraggio_pratiche_online": 0.2,
+          "indice_servizi_completamente_online": 0.25,
+          "indice_copertura_servizi_interamente_online": 0.3
+        }
+      },
+      "indice_uso_servizi": {
+        "description": "Composito (0–100) di utilizzo dei servizi digitali.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_utilizzo_canali_online_SUE": 0.2,
+          "indice_utilizzo_servizi_online_attivi": 0.8
+        }
+      },
+      "indice_assistenza_uso_servizi": {
+        "description": "Composito (0–100) di disponibilità dell’assistenza all’uso dei servizi online.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_disponibilita_assistenza_servizi_online": 1.0
+        }
+      },
+      "indice_digitalizzazione_backoffice": {
+        "description": "Composito (0–100) di digitalizzazione del back office.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_maturita_digitalizzazione_backoffice": 0.7,
+          "indice_implementazione_processi_digitali_interni":0.3
+        }
+      },
+      "indice_integrazione_interoperabilita": {
+        "description": "Composito (0–100) di integrazione e interoperabilità.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+            "indice_integrazione_servizi_sistemi_interni":0.55,
+            "indice_integrazione_servizi_sistemi_esterni":0.15,
+            "indice_riconciliazione_pagopa_automatica":0.3
+        }
+      },
+      "indice_atti_documenti": {
+        "description": "Composito (0–100) di digitalizzazione di atti e documenti.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+            "indice_gestione_digitale_atti":0.25,
+            "indice_fascicolazione_digitale":0.5,
+            "indice_maturita_interscambio_documentale":0.25
+        }
+      }
+    }
+  },
+  "level3": {
+    "indices": {
+      "macro_digitalizzazione_esterna": {
+        "description": "Macro indicatore (0–100) di digitalizzazione esterna.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_front_office": 0.7,
+          "indice_uso_servizi": 0.2,
+          "indice_assistenza_uso_servizi": 0.1
+        }
+      },
+      "macro_digitalizzazione_interna": {
+        "description": "Macro indicatore (0–100) di digitalizzazione interna.",
+        "entity_keys": ["quesito.user_id", "quesito.username"],
+        "method": "weighted_mean",
+        "normalize_weights": true,
+        "missing_policy": "renormalize",
+        "components": {
+          "indice_digitalizzazione_backoffice": 1.0,
+          "indice_integrazione_interoperabilita": 1.0,
+          "indice_atti_documenti": 1.0
+        }
+      }
+    }
+  }
+}

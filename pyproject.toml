@@ -11,7 +11,8 @@ dependencies = [
     "pandas (>=2.2,<3)",
     "streamlit (>=1.55.0,<2.0.0)",
     "numpy (>=2.4.3,<3.0.0)",
-    "matplotlib (>=3.10.8,<4.0.0)"
+    "matplotlib (>=3.10.8,<4.0.0)",
+    "watchdog (>=6.0.0,<7.0.0)"
 ]
 
 [tool.poetry]
