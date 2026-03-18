@@ -1,0 +1,27 @@
+[project]
+name = "simulatore-indici-comuni-2025"
+version = "0.1.0"
+description = "App Streamlit per simulare, calcolare e confrontare gli indici della Mappa dei Comuni Digitali 2025."
+authors = [
+    {name = "gabboDTD",email = "gabriele.spina@teamdigitale.governo.it"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "pandas (>=2.2,<3)",
+    "streamlit (>=1.55.0,<2.0.0)",
+    "numpy (>=2.4.3,<3.0.0)",
+    "matplotlib (>=3.10.8,<4.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+black = "^26.3.1"
+ruff = "^0.15.6"
+pytest = "^9.0.2"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
