@@ -99,17 +99,6 @@ File di configurazione atteso:
 index_config_D2_D3.json
 ```
 
-È consigliato usare un path relativo nel codice, ad esempio:
-
-```python
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent
-CFG_PATH = BASE_DIR / "index_config_D2_D3.json"
-```
-
-In questo modo il progetto rimane portabile tra macchine e ambienti diversi.
-
 ---
 
 ## Dipendenze principali
@@ -164,35 +153,15 @@ L'app produce:
 
 ---
 
-## Sviluppo
-
-Formattazione codice:
-
-```bash
-poetry run black .
-```
-
-Linting:
-
-```bash
-poetry run ruff check .
-```
-
-Test:
-
-```bash
-poetry run pytest
-```
-
----
-
 ## Licenza
 
-Questo progetto è distribuito con una **licenza custom per uso non commerciale**.
+Questo progetto è distribuito sotto licenza **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
-L'uso commerciale del software, in tutto o in parte, non è consentito senza autorizzazione esplicita del titolare dei diritti.
+Puoi usare, studiare, modificare e ridistribuire il software secondo i termini della licenza AGPL-3.0.
 
-Consulta il file `LICENSE` per i dettagli.
+Se il software viene modificato e reso disponibile attraverso una rete, il codice sorgente della versione modificata deve essere reso disponibile secondo i termini della stessa licenza.
+
+Consulta il file `LICENSE` per il testo completo della licenza.
 
 ---
 
@@ -212,7 +181,3 @@ Prototipo applicativo sviluppato per la simulazione e l'analisi degli indici com
 
 - persistenza dell'archivio simulato su file o database
 - esportazione dei risultati in CSV/Excel
-- confronto con benchmark reali
-- autenticazione utenti
-- deploy cloud dell'app
-- dashboard avanzate per analisi comparative
